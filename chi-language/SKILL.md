@@ -349,4 +349,36 @@ val time = luaExpr("os.time()")         // eval Lua expression, return result
 embedLua("print('from lua')")           // execute Lua statements (side effects)
 ```
 
-These are used extensively in the stdlib. Avoid them in application code unless necessary.
+**RULE: `luaExpr`/`embedLua` are a last resort — use them ONLY when no
+native Chi alternative exists.** This applies everywhere: application
+code, compiler code, and tests alike. Existing code (including the chicc
+compiler) still contains legacy FFI that predates native alternatives —
+do NOT copy that idiom into new code, even when editing a file full of it.
+
+Before reaching for FFI, check this list of native replacements:
+
+| Tempting FFI | Native Chi instead |
+| --- | --- |
+| `luaExpr("{}")` as empty array | `[]` (e.g. `val xs: array[any] = []`) |
+| `embedLua("table.insert(xs, v)")` | `xs.push(v)` |
+| `luaExpr("#xs")` | `xs.size()` (on a concretely-typed array) |
+| `luaExpr("xs[i]")` / `embedLua("xs[i] = v")` | `xs[i]` / `xs[i] = v` |
+| `luaExpr("t.field")` on a record or `any` | `t.field` (dynamic field access works on `any`) |
+| `embedLua("t.field = v")` | `t.field = v` |
+| raw table as string-keyed map | `std/lang.map` (`emptyMap`/`put`/`get`/`keys`) |
+| counting entries via `pairs` loop | keep a counter, or `m.size()` on a concrete Map |
+| string ops via `string.*` | `std/lang.string` (`len`, `find`, `substring`, ...) |
+
+On `any`-typed receivers prefer globally-unique stdlib names (`put`, `get`,
+`keys`) — shared names (`size`, `forEach`) raise `AMBIGUOUS_METHOD` there
+(see UFCS resolution above).
+
+Legitimate FFI (no native alternative today):
+
+- `pcall`/`error` interop — Chi has no try/catch
+- OS/IO facilities not wrapped by the stdlib (`os.time()`, `os.getenv`...)
+- reaching into Lua runtime internals (`package.loaded`, metatables)
+- genuinely performance-critical raw-table code (measure first)
+
+When you do use FFI, keep the snippet minimal and put the surrounding
+logic in Chi.
