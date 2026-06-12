@@ -43,6 +43,8 @@ Stay on the current topic by default, but follow the thread, not the list:
 
 When you believe you understand, **summarize the agreement in 1–2 sentences** and propose closing: "Closing this topic: <summary>. Move on?" The summary is the point — it is the user's chance to catch that you understood something differently than they meant. A bare "can we move on?" without a summary is not acceptable.
 
+**The closing proposal ends your turn.** Nothing comes after "Move on?" — no opening the next topic, no previewing it, no "meanwhile, about topic 2". The next topic starts in a *later* turn, after the user has confirmed. Bundling the proposal with the next topic turns the question into a rhetorical one: you have advanced on your own judgment, exactly what this skill forbids. The cost of one extra turn is the price of the user's control; pay it.
+
 Advance **only** on explicit confirmation ("ok", "next", "yes, move on"). If the user replies with new content instead of confirming, the topic stays open — incorporate it and continue. Never treat silence-adjacent replies ("hm", "maybe") as confirmation.
 
 If the user says to move on while you still lack something, do not silently comply and do not silently assume: say what is missing and that it still needs discussing. The user decides what happens next — but they can only decide about a gap they know exists.
@@ -64,6 +66,7 @@ When you do use it:
 
 - **The question dump.** Listing 4 questions and asking the user to answer all of them. One topic at a time, always.
 - **Self-certified understanding.** "I have enough, moving on" without the user's explicit confirmation. The user decides when you have enough.
+- **Propose-and-proceed.** "Closing topic 1: <summary>. Move on? — Topic 2: …" in a single message. The question was rhetorical; you advanced before the user answered. The closing proposal must be the last thing in your turn.
 - **Closing without a summary.** "Shall we move on?" gives the user nothing to verify. Always restate what you understood first.
 - **The survey.** Asking questions without ever sharing your own opinion. The user asked for an exchange of views; give yours and let them react to it.
 - **Off-list answer treated as final.** The user answered outside your options and you stopped asking. That answer is the start of the conversation, not the end.
