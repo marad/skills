@@ -271,6 +271,19 @@ package std/lang.array    // OK -- dotted package
 package foo               // PARSE ERROR -- needs a slash
 ```
 
+### No `;` -- statements are separated by newlines
+
+Chi has no `;` statement separator/terminator; the lexer rejects `;` as an
+unrecognized character. Put each statement on its own line.
+
+```chi
+// WRONG: while i <= n { acc.push(i); i = i + 1 }
+while i <= n {
+    acc.push(i)
+    i = i + 1
+}
+```
+
 ### Mutual recursion requires `var` pattern
 
 Self-recursion via `fn` works fine. However, mutual recursion (two functions calling each other) requires the `var` workaround since Chi lacks forward declarations:
