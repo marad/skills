@@ -86,7 +86,7 @@ Now (and only now, on the version produced by Round 2) run the subtraction pass:
 2. **Is anything overcomplicated relative to what the spec asks?** Flag anything solving a more general problem than required. Flag premature optimization, premature concurrency, premature plugin systems.
 3. **Anything likely slow or resource-heavy where it matters?** O(n²) over realistic inputs, repeated I/O in loops, loading whole datasets where streaming would do, sync calls on latency-sensitive paths. Only flag if the spec implies it matters.
 
-Apply trivial fixes directly; escalate non-trivial ones before user sign-off.
+Apply trivial fixes directly; escalate non-trivial ones before user sign-off. Mind the asymmetry: this round subtracts, but a cheap, low-risk robustness/correctness fix in the artifact you're already touching is **not** gold-plating — if it's trivial, apply it now; don't rationalize deferring it ("current data is fine") or quietly file it under "rejected." Only its non-triviality, never its mere existence, justifies leaving it for sign-off.
 
 ### Discipline rule
 

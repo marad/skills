@@ -87,7 +87,7 @@ Three quick rounds — the *point* of this step is to spot things your first-pas
 2. **Is anything overcomplicated relative to the spec?** — solves more than asked, defensive checks for impossible states, configuration nobody uses.
 3. **Anything likely slow or wasteful where it matters?** — repeated I/O in a loop, O(n²) over realistic inputs, redundant allocations on a hot path. Only flag if the surrounding code implies it matters.
 
-Apply trivial fixes directly. Report what was checked, what was regenerated, and what changed. "Looks good" is not an acceptable review.
+Apply trivial fixes directly. Mind the asymmetry: the three questions above are about *removing* excess, but a cheap, low-risk robustness/correctness fix in code you're already touching is **not** gold-plating — apply it, don't rationalize deferring it ("current data is fine"). Bias toward fixing a flagged tiny issue now over leaving it for a reviewer. Report what was checked, what was regenerated, and what changed. "Looks good" is not an acceptable review.
 
 ### Output
 
