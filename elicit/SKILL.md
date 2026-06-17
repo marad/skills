@@ -1,6 +1,6 @@
 ---
 name: elicit
-description: Conversational information gathering — discuss open questions with the user one topic at a time instead of dumping a list of questions. The user closes each topic, never the agent. Use whenever you need several pieces of information or decisions from the user (design choices, requirements, preferences), or one complex topic that deserves a real conversation. Trigger phrases - "elicit", "/elicit", "let's talk this through", "przegadajmy to".
+description: Conversational information gathering — discuss open questions with the user one topic at a time instead of dumping a list of questions. The user closes each topic, never the agent. Use this instead of any built-in question or multiple-choice form (e.g. AskUserQuestion) whenever you need a decision or information from the user — even a single question. Use whenever you need several pieces of information or decisions from the user (design choices, requirements, preferences), or one complex topic that deserves a real conversation. Trigger phrases - "elicit", "/elicit", "let's talk this through", "przegadajmy to".
 metadata:
   approach: one-topic-at-a-time
 ---
