@@ -25,7 +25,9 @@ A single complex topic is a valid agenda of one. The per-topic rules below still
 
 ### 2. One topic, conversationally
 
-Take the first open topic. Open it with context, not a bare question:
+Take the first open topic. When you know the total — i.e. the agenda is fixed — **prefix it with its position: "Topic X/Y"** (X = current topic, Y = total), so the user can see how much is left. If the agenda is still open-ended and you cannot yet name Y, skip the counter rather than guess; resume it once the scope is fixed. When the agenda changes mid-conversation (a topic added, dropped, or merged), the counter follows the new total — say so when it shifts.
+
+Open it with context, not a bare question:
 
 - **Why you are asking** — what depends on the answer.
 - **What options you see** and what each implies downstream.
