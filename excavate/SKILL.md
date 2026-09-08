@@ -114,8 +114,8 @@ Read everything the user pointed at. Do NOT start sketching anything until you h
 
 After reading, produce a short list of everything the notes do *not* pin down that could affect design. Classify each item:
 
-- **Must decide now (load-bearing)** — choices that change the shape of modules, signatures, or types. The diagram looks fundamentally different depending on the answer.
-- **Can defer** — implementation details that the signatures will not depend on.
+- **Must decide now (load-bearing)** — unresolved choices that change a logical module boundary, public signature/type, user-visible contract, supported platform, runtime/process model, persistence/privacy model, or an irreversible external action, and cannot be isolated behind an existing boundary. The diagram or public contract looks fundamentally different depending on the answer.
+- **Can defer** — choices that do not change those boundaries: internal error/status representation, timing constants, polling mechanics, test mechanics, concrete dependencies hidden behind ports, and adapter/parser details. The agent chooses these autonomously and records non-trivial choices after implementation.
 - **Out of scope** — record and skip.
 
 Common load-bearing items to check for explicitly:
@@ -129,9 +129,11 @@ Common load-bearing items to check for explicitly:
 
 ### 0c. Ask the user — do NOT pick silently
 
-For each must-decide-now item, **ask the user**. Use `AskUserQuestion` with 2–4 concrete options and a one-line tradeoff per option. Do not present a single recommendation as if it were settled. You may suggest a preferred option, but the user picks.
+Ask the user only about **must-decide-now** items. Use `/skill:elicit` with 2–4 concrete options and a one-line tradeoff per option. Do not present a single recommendation as if it were settled. You may suggest a preferred option, but the user picks.
 
-Rule of thumb: if changing the answer would force a non-trivial rewrite of the diagram or signatures, it is load-bearing and you must ask. Picking a programming language because the user did not mention one is the canonical violation.
+Do not ask about **can defer** items. Choose the simplest sound implementation, keep it behind the accepted boundary, and record the choice after the gate if it is non-trivial. If the user says a topic is implementation-level, close it as delegated instead of drilling into sub-decisions.
+
+Rule of thumb: if changing the answer would force a non-trivial rewrite of the logical diagram, public signatures, user-visible contract, or runtime/process model, it is load-bearing and you must ask. If it changes only a body, hidden dependency, internal error/status type, timing value, or test strategy, defer it. Picking a programming language because the user did not mention one is the canonical violation.
 
 ### 0d. What NOT to decide in Phase 0
 
@@ -146,11 +148,11 @@ Physical layout is an artifact that emerges from Phase 2 (signatures-only stubs)
 
 ### 0e. Output of Phase 0
 
-A short note (can be in chat, or written to `docs/excavation/<feature>/00-decisions.md` if the user wants it persisted): the decisions made, the options considered, and any open questions explicitly deferred. No diagrams, no layouts, no code.
+A short note (can be in chat, or written to `docs/excavation/<feature>/00-decisions.md` if the user wants it persisted): the decisions made, the options considered, the delegated implementation choices/defaults, and any open questions explicitly deferred. No diagrams, no layouts, no code. Delegated choices are not approval requests.
 
 ### 0f. Self-review (gate)
 
-Run the *Self-Review Gate* on the decisions: is any decision adding complexity the spec does not need? Any deferred-but-actually-load-bearing item hiding in the list? Resolve before Phase 1.
+Run the *Self-Review Gate* on the decisions: is any decision adding complexity the spec does not need? Is any deferred item actually load-bearing? Is any implementation detail being escalated merely because it has an observable edge case? Resolve genuinely load-bearing gaps before Phase 1; keep delegated details delegated.
 
 ## Phase 1 — Annotated Module Diagram
 

@@ -15,7 +15,7 @@ The core contract: **the user closes a topic, never you.** You may propose closi
 
 ### 1. Agenda
 
-Open with the list of topics you need to discuss — titles only, one line each, no question content yet. This shows the user the scope of the conversation.
+Open with the list of **load-bearing topics that genuinely require the user's choice** — titles only, one line each, no question content yet. This shows the user the scope of the conversation. Do not put implementation details, timing constants, internal error/status representation, concrete dependencies hidden behind ports, or test mechanics on the agenda; those are delegated choices.
 
 Order for human cognitive flow, not for your bookkeeping: related topics go next to each other, so the user never has to drop a mental context and pick it back up later. Within that, put topics whose answers inform later ones first.
 
@@ -35,6 +35,8 @@ Open it with context, not a bare question:
 
 Then ask, openly. This is an exchange of views, not an interrogation: the user reacts to your take, asks back, pushes; you answer their questions, refine, push back when you disagree.
 
+If the user identifies the topic as implementation-level or already settled, accept that classification. Summarize it as delegated/settled, close the topic, and do not split it into lower-level follow-up questions. Only a newly revealed load-bearing consequence reopens the gate.
+
 Stay on the current topic by default, but follow the thread, not the list:
 
 - **If the discussion naturally leads into a later agenda item**, take that item next — announce the reorder ("this leads straight into topic 4, let's take it now") instead of snapping back to the original order. Order is in service of context; never make the user drop a train of thought just to honor the list.
@@ -53,7 +55,7 @@ If the user says to move on while you still lack something, do not silently comp
 
 ### 4. Repeat, then recap
 
-Work through the agenda topic by topic. After the last topic closes, give a compact recap of **all** agreements — one line per topic. This is the reference point for the work that follows; subsequent implementation should be checkable against it.
+Work through the agenda topic by topic. After the last topic closes, give a compact recap of **all** agreements — one line per topic — plus a short list of delegated implementation areas that the agent will decide autonomously. Delegated items are not awaiting approval. This is the reference point for the work that follows; subsequent implementation should be checkable against it.
 
 ## AskUserQuestion: the exception, not the default
 
