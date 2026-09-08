@@ -33,3 +33,10 @@ the next variant of the *same* problem.
    in. If you can't make it fail on the old code, you're asserting the wrong
    thing (often: asserting a downstream state that is identical either way instead
    of the behavior the fix actually changed).
+
+3. **Question the approach itself, not just the design detail.** A cluster of
+   findings on one axis can also mean the whole approach is unsound — you are
+   approximating something that already exists, or the problem is not decidable
+   the way you are attacking it. Before another round, ask: is there a simpler
+   sound approach (often deleting the code and leaning on what already works),
+   and should this go back to the user instead of grinding more rounds?
