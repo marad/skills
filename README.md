@@ -17,14 +17,12 @@ Skills copied from other people's repos, kept here for convenience. Credit and l
 
 ## Install
 
-Clone and symlink the skills you want into `~/.claude/skills/`:
+Clone and run the install script. It symlinks every skill in this repo into
+`~/.claude/skills/`, skipping names that are already taken by something else:
 
 ```bash
 git clone https://github.com/marad/skills ~/dev-personal/skills
-ln -s ~/dev-personal/skills/excavate ~/.claude/skills/excavate
-ln -s ~/dev-personal/skills/chisel   ~/.claude/skills/chisel
-ln -s ~/dev-personal/skills/review-until-clean ~/.claude/skills/review-until-clean
-ln -s ~/dev-personal/skills/bro     ~/.claude/skills/bro
+~/dev-personal/skills/install.sh
 ```
 
 Skills are discovered on the next Claude Code session.
