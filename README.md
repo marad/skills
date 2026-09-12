@@ -17,6 +17,18 @@ Skills copied from other people's repos, kept here for convenience. Credit and l
 
 ## Install
 
+### With the `skills` CLI
+
+```bash
+npx skills@latest add marad/skills
+```
+
+[vercel-labs/skills](https://github.com/vercel-labs/skills) asks which skills and which
+agents (Claude Code, Codex, Cursor and ~75 others), then installs them. Later:
+`npx skills update` / `npx skills remove <name>`.
+
+### From a clone
+
 Clone and run the install script. It symlinks every skill in this repo into
 `~/.claude/skills/`, skipping names that are already taken by something else:
 
