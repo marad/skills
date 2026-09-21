@@ -8,6 +8,7 @@ Personal Claude Code skills.
 - **`chisel/`** — Lightweight cousin of excavate for changes that fit in 1–3 files. Same discipline (no silent load-bearing decisions, contracts before bodies, tests before bodies, self-review), no formal artifacts.
 - **`elicit/`** — Conversational information gathering. When the agent needs several pieces of information from the user, it discusses them one topic at a time — context and opinion first, free-form exchange, agent proposes closing but only the user closes a topic — instead of dumping a list of questions.
 - **`review-until-clean/`** — Thin wrapper that runs `/loop /code-review --fix` until there are no material findings left in the diff. Saves re-typing the command.
+- **`prune-comments/`** — Prunes the comments an agent left behind in a change: paraphrase of the code, cross-references, ticket numbers, positional narration. Runs on the branch before review, on the comment lines that branch added.
 
 ## Third-party skills
 
